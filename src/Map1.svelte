@@ -35,7 +35,7 @@ function process() {
   for(let id=0; id<cars.length; id++) {
     if (cars[id].x < map1.mapDimensions.maxX ) { 
       cars[id].x += cars[id].accel;
-    } 
+    }
   }
 }
 

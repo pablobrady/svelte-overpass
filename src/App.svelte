@@ -1,4 +1,6 @@
 <script>
+	import Map1 from "./Map1.svelte"
+
 	const PAGE = {
 		'welcome': 1,
 		'start': 2,
@@ -21,16 +23,12 @@
 		{ id: PAGE.end,  text: `About the Author` }
 	]
 
-	let selected = PAGE.welcome;
+	let selected = PAGE.map1 // PAGE.welcome;
 	let answer = '';
 
 	
 	function gotoPage(e) {
 		selected = e.target.getAttribute("nextpage")
-	}
-
-	function selectAView() {
-		
 	}
 
 	function handleSubmit() {
@@ -50,7 +48,7 @@
 
 
 {#if selected == PAGE.start}
-	<h1>Getting Started?</h1>
+	<h1>Getting Started (Start your Engines)</h1>
 	<select bind:value={selected} on:change="{() => answer = ''}">
 		<option value=0 default>Select a View</option>
 		{#each navOptions as navOption}
@@ -64,11 +62,14 @@
 	<p>selected navOption {selected ? selected.id : '[waiting...]'}</p>
 {/if}
 
-{#if selected == PAGE.map1}
-	<h1>Map 1 - Diamond Interchange</h1>
 
+{#if selected == PAGE.map1}
+	<h1>Map 1 - Traffic Pattern 1</h1>
+
+	<Map1 />
+
+	<hr>
 	<button on:click="{gotoPage}" nextpage="{PAGE.start}">Nav Menu</button>
-	<!-- < Nav Menu / > -->
 {/if}
 
 
